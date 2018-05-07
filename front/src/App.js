@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import React from "react";
 import io from 'socket.io-client'
 
-class App extends React.Component{
+class App extends Component{
   
     state = { socket:null, globalNumber:0 }
   
@@ -21,6 +20,17 @@ class App extends React.Component{
     onIncrement = () => this.state.socket.emit('increment')
     onDecrement = () => this.state.socket.emit('decrement')
     render(){
-    // do something here to show the globalNumber and use increment and decrement
+      return (
+        <div className="App">
+         
+    <h1>{this.state.globalNumber}</h1>
+          <p className="App-intro">
+            <button onClick={this.onIncrement}>+</button>
+            <button onClick={this.onDecrement}>-</button>
+          </p>
+        </div>
+      );
     }
   }
+  
+  export default App;
